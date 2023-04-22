@@ -90,6 +90,8 @@ img {
 }
 
 .leave-comment {
+  text-decoration: underline;
+  cursor: pointer;
   margin-left: 20px;
 }
 

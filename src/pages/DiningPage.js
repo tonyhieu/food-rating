@@ -4,8 +4,25 @@ import CommentSubmitter from './CommentSubmitter.js'
 
 
 function DiningPage(props) {
-    const [result, setResult] = React.useState(false);
-    const onClick = () => setResult(true)
+    const commentCheck = () => {
+        let card = document.getElementsByClassName('dining-comments')[0];
+        if (card.style.display == 'inline') {
+            card.style.display = 'none';
+        }
+        else {
+            card.style.display = 'inline';
+        }
+    }
+
+    const leaveCheck = () => {
+        let card = document.getElementsByClassName('comment-card')[0];
+        if (card.style.display == 'inline') {
+            card.style.display = 'none';
+        }
+        else {
+            card.style.display = 'inline';
+        }
+    }
 
 
 
@@ -97,8 +114,8 @@ function DiningPage(props) {
                 <h2>{hall.name}</h2>
                 <p className="dining-rating">Average rating: {hall.averageRating}</p>
                 <div className="dining-user-options">
-                    <div className="comment" onClick={onClick}>Comments</div>
-                    <div className="leave-comment">Leave a comment</div>
+                    <div className="comment" onClick={commentCheck}>Comments</div>
+                    <div className="leave-comment" onClick={leaveCheck}>Leave a comment</div>
                 </div>
                 <div className="dining-comments">
                     {comments}
