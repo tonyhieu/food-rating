@@ -55,7 +55,9 @@ function DiningPage(props) {
                     <div className="comment" onClick={onClick}>Comments</div>
                     <div className="leave-comment">Leave a comment</div>
                 </div>
-                {comments}
+                <div className="dining-comments">
+                    {comments}
+                </div>
                 <CommentSubmitter />
             </div>
         );

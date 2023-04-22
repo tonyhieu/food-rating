@@ -14,7 +14,8 @@ function Home() {
             <h1 className="home-header">Dining Review</h1>
             <form>
                 <input type="text" name="message" id="input-message" placeholder="Type a school name here..." />
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                <FontAwesomeIcon id="magnifying-glass" icon={faMagnifyingGlass} onClick={() => navigate('/dining')} />
+
             </form>
         </div>
     );

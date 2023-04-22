@@ -47,7 +47,7 @@ img {
 
 .card {
   height: fit-content;
-  border: 2px solid black;
+  border: 3px solid black;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -71,12 +71,53 @@ img {
   cursor: pointer;
 }
 
+.dining-comments {
+  background: #D9D9D9;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
 .comments {
   position: relative;
+  margin: 1px;
 }
 
 .leave-comment {
   margin-left: 20px;
 }
 
-/* CSS react slider */
+#magnifying-glass {
+  margin-left: 10px;
+}
+
+.comment-card {
+  border-radius: 10px;
+  background: #D9D9D9;
+  padding: 15px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+}
+
+#comment-text {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+#submit {
+  background: #748AFF;
+  font-weight: bold;
+  border-radius: 5px;
+}
