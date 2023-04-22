@@ -28,3 +28,48 @@
   color: black;
   padding: 0 10px 0;
 }
+
+.dining-page {
+  height: 100vh;
+  width: 100vw;
+}
+
+.dining-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+}
+
+.card {
+  height: fit-content;
+  border: 2px solid black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.dining-rating {
+  margin-top: -2vh;
+}
+
+.dining-user-options {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.comment {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.leave-comment {
+  margin-left: 20px;
+}
