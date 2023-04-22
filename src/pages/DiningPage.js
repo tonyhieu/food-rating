@@ -1,5 +1,6 @@
 import '../App.css';
 import React, { useState } from 'react';
+import CommentSubmitter from './CommentSubmitter.js'
 
 
 function DiningPage(props) {
@@ -52,9 +53,10 @@ function DiningPage(props) {
                 <p className="dining-rating">Average rating: {hall.averageRating}</p>
                 <div className="dining-user-options">
                     <div className="comment" onClick={onClick}>Comments</div>
-                    {result ? { comments } : null}
                     <div className="leave-comment">Leave a comment</div>
                 </div>
+                {comments}
+                <CommentSubmitter />
             </div>
         );
     }
