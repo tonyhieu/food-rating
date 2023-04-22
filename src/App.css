@@ -62,6 +62,7 @@ img {
 .dining-user-options {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 
@@ -70,6 +71,12 @@ img {
   cursor: pointer;
 }
 
+.comments {
+  position: relative;
+}
+
 .leave-comment {
   margin-left: 20px;
 }
+
+/* CSS react slider */
