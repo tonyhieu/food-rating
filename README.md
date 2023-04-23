@@ -15,7 +15,7 @@ We used React for the frontend user interface and Firebase for the backend datab
 Firebase was new to all of us, so we had to learn how to set up and structure the database, then figure out how to deploy the API to send json data to the webpage
 
 ## Accomplishments that we're proud of
-We created a working API and implemented a backend database with firebase. We also created a platform that allows for user input and updates the database and webpage in real 
+We created a working API and implemented a backend database with firebase. We also created a platform that allows for user input and updates the database and webpage in real time
 
 ## What we learned
 We learned how to use Postman to send requests to the API
