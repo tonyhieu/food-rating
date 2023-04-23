@@ -13,6 +13,30 @@ function DiningPage() {
     const state = useLocation();
     const [hall, setHall] = useState([]);
     const college = state.state.college;
+    const navigate = useNavigate();
+
+    const commentCheck = (e) => {
+        console.log('running this')
+        let card = document.getElementsByClassName('dining-comments');
+        if (card[e.target.id[e.target.id.length - 1]].style.display == 'inline') {
+            card[e.target.id[e.target.id.length - 1]].style.display = 'none';
+        }
+        else {
+            card[e.target.id[e.target.id.length - 1]].style.display = 'inline';
+        }
+
+    }
+
+    const leaveCheck = (e) => {
+        console.log('running this')
+        let card = document.getElementsByClassName('comment-card');
+        if (card[e.target.id[e.target.id.length - 1]].style.display == 'inline') {
+            card[e.target.id[e.target.id.length - 1]].style.display = 'none';
+        }
+        else {
+            card[e.target.id[e.target.id.length - 1]].style.display = 'inline';
+        }
+    }
 
     const url = "https://us-central1-foodreviewdatabase-e8095.cloudfunctions.net/app/api/getHalls/" + college;
     var requestOptions = {
@@ -25,7 +49,7 @@ function DiningPage() {
                 return response.json();
             })
             .then(data => setHall(data.data))
-    })
+    }, []);
 
     const diningHalls = hall;
     const cards = []
@@ -61,37 +85,12 @@ function DiningPage() {
     }
 
 
-    const navigate = useNavigate();
-
-    const commentCheck = (e) => {
-        console.log('running this')
-        let card = document.getElementsByClassName('dining-comments');
-        if (card[e.target.id[e.target.id.length - 1]].style.display == 'inline') {
-            card[e.target.id[e.target.id.length - 1]].style.display = 'none';
-        }
-        else {
-            card[e.target.id[e.target.id.length - 1]].style.display = 'inline';
-        }
-
-    }
-
-    const leaveCheck = (e) => {
-        console.log('running this')
-        let card = document.getElementsByClassName('comment-card');
-        if (card[e.target.id[e.target.id.length - 1]].style.display == 'inline') {
-            card[e.target.id[e.target.id.length - 1]].style.display = 'none';
-        }
-        else {
-            card[e.target.id[e.target.id.length - 1]].style.display = 'inline';
-        }
-    }
-
     return (
         <div className="dining-page">
             <FontAwesomeIcon id="left-arrow" icon={faArrowLeft} onClick={() => navigate('/')} />
             <h1 className="dining-title">Dining Halls at {college}</h1>
             <div className="dining-cards">
-                {cards}
+                {cards.length > 0 ? cards : "No dining halls found for this school"}
             </div>
 
         </div>

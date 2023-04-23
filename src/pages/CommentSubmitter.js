@@ -4,23 +4,49 @@ import '../App.css';
 function CommentSubmitter(props) {
     const [value, changeValue] = useState(1)
     const [comment, setComment] = useState('')
-    const handleChange = (() => {
-        const url = "https://us-central1-foodreviewdatabase-e8095.cloudfunctions.net/app/api/getHalls/create" + props.college + "/" + props.index;
-        let data_value = {
-            "rating": value,
-            "comment": comment
+    const handleChange = ((event) => {
+        const url = "https://us-central1-foodreviewdatabase-e8095.cloudfunctions.net/app/api/create/" + props.college + "/" + props.index;
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
 
-        }
+        var raw = JSON.stringify({
+            "comment": comment,
+            "rating": parseInt(value)
+        });
+
         var requestOptions = {
             method: 'POST',
-            body: data_value,
+            headers: myHeaders,
+            body: raw,
             redirect: 'follow'
         };
+
         fetch(url, requestOptions)
-            .then(response => {
-                return response.json();
-            })
-            .then(data => console.log(data))
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+        // let data_value = {
+        //     "rating": value,
+        //     "comment": comment
+        // }
+        // var requestOptions = {
+        //     method: "POST", // *GET, POST, PUT, DELETE, etc.
+        //     mode: "cors", // no-cors, *cors, same-origin
+        //     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        //     credentials: "same-origin", // include, *same-origin, omit
+        //     redirect: "follow", // manual, *follow, error
+        //     referrerPolicy: "no-referrer",
+        //     body: JSON.stringify(data_value)
+        // };
+        // console.log(data_value)
+        // fetch(url, requestOptions)
+        //     .then(response => {
+        //         console.log(response.json())
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //     })
+        event.preventDefault();
     });
 
     return (
