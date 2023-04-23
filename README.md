@@ -18,7 +18,7 @@ Firebase was new to all of us, so we had to learn how to set up and structure th
 TODO
 
 ## What we learned
-We learned how to use Postman to send requests to the API
+We learned how to use Postman to send requests to the API. We also learned the basics of Google Firebase and used endpoints from the frontend to call the API in order to make the post and get requests that were necessary for the project.
 
 ## What's next for Chow Checker
-TODO
+We are hoping to add many more universities to Chow Checker so that we can allow as many college students as possible to use this website to help them make informed decisions on which dining halls to go to for good food. Additionally, we would want to implement potential ratings for individual foods, rather than just an overall rating of a specific restaurant. Furthermore, we were planning on clearing data everyday so that ratings would be accurate for each day so that people would know when a specific restaurant had good food for breakfast, lunch, and dinner of everyday.
