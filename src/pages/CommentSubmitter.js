@@ -24,28 +24,11 @@ function CommentSubmitter(props) {
         fetch(url, requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
+            .then(() => {
+                window.location.reload(false);
+            })
             .catch(error => console.log('error', error));
-        // let data_value = {
-        //     "rating": value,
-        //     "comment": comment
-        // }
-        // var requestOptions = {
-        //     method: "POST", // *GET, POST, PUT, DELETE, etc.
-        //     mode: "cors", // no-cors, *cors, same-origin
-        //     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        //     credentials: "same-origin", // include, *same-origin, omit
-        //     redirect: "follow", // manual, *follow, error
-        //     referrerPolicy: "no-referrer",
-        //     body: JSON.stringify(data_value)
-        // };
-        // console.log(data_value)
-        // fetch(url, requestOptions)
-        //     .then(response => {
-        //         console.log(response.json())
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //     })
+
         event.preventDefault();
     });
 
