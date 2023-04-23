@@ -21,6 +21,22 @@
 
 }
 
+.chow-form {
+  display: flex;
+  flex-direction: row;
+
+}
+
+#magnifying-glass {
+  margin-left: 5px;
+  width: 2vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
 #input-message {
   height: 5vh;
   border-radius: 15px;

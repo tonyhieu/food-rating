@@ -24,10 +24,10 @@ function Home() {
     return (
         <div className="home">
             <h1 className="home-header">Chow Checker</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="chow-form" onSubmit={handleSubmit}>
                 <input type="text" onChange={event => setCollege(event.target.value)} name="message" id="input-message" placeholder="Type a school name here..." />
-                <button type="submit">
-                    <FontAwesomeIcon id="magnifying-glass" icon={faMagnifyingGlass} />
+                <button type="submit" id="magnifying-glass">
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
 
             </form>
