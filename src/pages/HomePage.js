@@ -23,7 +23,7 @@ function Home() {
 
     return (
         <div className="home">
-            <h1 className="home-header">Dining Review</h1>
+            <h1 className="home-header">Chow Checker</h1>
             <form onSubmit={handleSubmit}>
                 <input type="text" onChange={event => setCollege(event.target.value)} name="message" id="input-message" placeholder="Type a school name here..." />
                 <button type="submit">
