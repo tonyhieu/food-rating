@@ -1,11 +1,70 @@
 import '../App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import CommentSubmitter from './CommentSubmitter.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 
-function DiningPage(props) {
+
+
+
+function DiningPage() {
+    const state = useLocation();
+    const [hall, setHall] = useState([]);
+    const college = state.state.college;
+
+    const url = "https://us-central1-foodreviewdatabase-e8095.cloudfunctions.net/app/api/getHalls/" + college;
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
+    useEffect(() => {
+        fetch(url, requestOptions)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => setHall(data.data))
+    })
+
+    const diningHalls = hall;
+    const cards = []
+
+    for (let i = 0; i < diningHalls.length; i++) {
+        const hall = diningHalls[i];
+        const comments = [];
+
+        for (let j = 0; j < hall.comments.length; j++) {
+            comments.push(<p className="comments" >{hall.comments[j]}</p>);
+        }
+
+        let index_data = {
+            college: college,
+            index: i
+        }
+
+        cards.push(
+            <div className="dining-hall-card">
+                <img src={hall.imageUrl} alt={"Image of " + hall.name} />
+                <h2>{hall.name}</h2>
+                <p className="dining-rating">Average rating: {hall.averageRating}</p>
+                <div className="dining-user-options">
+                    <div className="comment" onClick={commentCheck} id={"comments" + i}>Comments</div>
+                    <div className="leave-comment" onClick={leaveCheck} id={"leave-comments" + i}>Leave a comment</div>
+                </div>
+                <div className="dining-comments">
+                    {comments}
+                </div>
+                <CommentSubmitter {...index_data} />
+            </div>
+        );
+    }
+
+
+    const navigate = useNavigate();
+
     const commentCheck = (e) => {
-        console.log(e.target.id);
+        console.log('running this')
         let card = document.getElementsByClassName('dining-comments');
         if (card[e.target.id[e.target.id.length - 1]].style.display == 'inline') {
             card[e.target.id[e.target.id.length - 1]].style.display = 'none';
@@ -17,8 +76,8 @@ function DiningPage(props) {
     }
 
     const leaveCheck = (e) => {
+        console.log('running this')
         let card = document.getElementsByClassName('comment-card');
-        console.log(e.target.id);
         if (card[e.target.id[e.target.id.length - 1]].style.display == 'inline') {
             card[e.target.id[e.target.id.length - 1]].style.display = 'none';
         }
@@ -27,111 +86,10 @@ function DiningPage(props) {
         }
     }
 
-
-
-
-    const jsonData = {
-        "schoolName": "UCLA",
-        "diningHalls": [
-            {
-                "name": "De Neve",
-                "averageRating": 4.3,
-                "imageUrl": "https://conferences.ucla.edu/wp-content/uploads/2019/01/De-Neve-Plaza_JH.jpg",
-                "comments": [
-                    "the food is okay",
-                    "i liked the breakfast"
-                ]
-            },
-            {
-                "name": "De Neve",
-                "averageRating": 4.3,
-                "imageUrl": "https://conferences.ucla.edu/wp-content/uploads/2019/01/De-Neve-Plaza_JH.jpg",
-                "comments": [
-                    "the food is okay",
-                    "i liked the breakfast"
-                ]
-            },
-            {
-                "name": "De Neve",
-                "averageRating": 4.3,
-                "imageUrl": "https://conferences.ucla.edu/wp-content/uploads/2019/01/De-Neve-Plaza_JH.jpg",
-                "comments": [
-                    "the food is okay",
-                    "i liked the breakfast"
-                ]
-            },
-            {
-                "name": "De Neve",
-                "averageRating": 4.3,
-                "imageUrl": "https://conferences.ucla.edu/wp-content/uploads/2019/01/De-Neve-Plaza_JH.jpg",
-                "comments": [
-                    "the food is okay",
-                    "i liked the breakfast"
-                ]
-            },
-            {
-                "name": "De Neve",
-                "averageRating": 4.3,
-                "imageUrl": "https://conferences.ucla.edu/wp-content/uploads/2019/01/De-Neve-Plaza_JH.jpg",
-                "comments": [
-                    "the food is okay",
-                    "i liked the breakfast"
-                ]
-            },
-            {
-                "name": "De Neve",
-                "averageRating": 4.3,
-                "imageUrl": "https://conferences.ucla.edu/wp-content/uploads/2019/01/De-Neve-Plaza_JH.jpg",
-                "comments": [
-                    "the food is okay",
-                    "i liked the breakfast"
-                ]
-            },
-            {
-                "name": "Epicurious",
-                "averageRating": 4.6,
-                "imageUrl": "https://portal.housing.ucla.edu/sites/default/files/media/images/Epicuria%20at%20Covel4_square.png",
-                "comments": [
-                    "the food was good today",
-                    "pizza was really good"
-                ]
-            }
-        ]
-    }
-
-
-
-    const { schoolName, diningHalls } = jsonData;
-    const cards = [];
-
-    for (let i = 0; i < diningHalls.length; i++) {
-        const hall = diningHalls[i];
-        const comments = [];
-
-        for (let j = 0; j < hall.comments.length; j++) {
-            comments.push(<p className="comments" >{hall.comments[j]}</p>);
-        }
-
-        cards.push(
-            <div className="dining-hall-card">
-                <img src={hall.imageUrl} alt="Hall Image" />
-                <h2>{hall.name}</h2>
-                <p className="dining-rating">Average rating: {hall.averageRating}</p>
-                <div className="dining-user-options">
-                    <div className="comment" onClick={commentCheck} id={"comments" + i}>Comments</div>
-                    <div className="leave-comment" onClick={leaveCheck} id={"leave-comments" + i}>Leave a comment</div>
-                </div>
-                <div className="dining-comments">
-                    {comments}
-                </div>
-                <CommentSubmitter />
-            </div>
-        );
-    }
-
     return (
         <div className="dining-page">
-            <h1 className="dining-title">Dining Halls at {schoolName}</h1>
+            <FontAwesomeIcon id="left-arrow" icon={faArrowLeft} onClick={() => navigate('/')} />
+            <h1 className="dining-title">Dining Halls at {college}</h1>
             <div className="dining-cards">
                 {cards}
             </div>
