@@ -21,4 +21,4 @@ We created a working API and implemented a backend database with firebase. We al
 We learned how to use Postman to send requests to the API
 
 ## What's next for Chow Checker
-TODO
+We are hoping to add many more universities to Chow Checker so that we can allow as many college students as possible to use this website to help them make informed decisions on which dining halls to go to for good food. Additionally, we would want to implement potential ratings for individual foods, rather than just an overall rating of a specific restaurant. Furthermore, we were planning on clearing data everyday so that ratings would be accurate for each day so that people would know when a specific restaurant had good food for breakfast, lunch, and dinner of everyday.
