@@ -4,25 +4,29 @@ import CommentSubmitter from './CommentSubmitter.js'
 
 
 function DiningPage(props) {
-    const commentCheck = () => {
-        let card = document.getElementsByClassName('dining-comments')[0];
-        if (card.style.display == 'inline') {
-            card.style.display = 'none';
+    const commentCheck = (e) => {
+        console.log(e.target.id);
+        let card = document.getElementsByClassName('dining-comments');
+        if (card[e.target.id[e.target.id.length - 1]].style.display == 'inline') {
+            card[e.target.id[e.target.id.length - 1]].style.display = 'none';
         }
         else {
-            card.style.display = 'inline';
+            card[e.target.id[e.target.id.length - 1]].style.display = 'inline';
+        }
+
+    }
+
+    const leaveCheck = (e) => {
+        let card = document.getElementsByClassName('comment-card');
+        console.log(e.target.id);
+        if (card[e.target.id[e.target.id.length - 1]].style.display == 'inline') {
+            card[e.target.id[e.target.id.length - 1]].style.display = 'none';
+        }
+        else {
+            card[e.target.id[e.target.id.length - 1]].style.display = 'inline';
         }
     }
 
-    const leaveCheck = () => {
-        let card = document.getElementsByClassName('comment-card')[0];
-        if (card.style.display == 'inline') {
-            card.style.display = 'none';
-        }
-        else {
-            card.style.display = 'inline';
-        }
-    }
 
 
 
@@ -105,7 +109,7 @@ function DiningPage(props) {
         const comments = [];
 
         for (let j = 0; j < hall.comments.length; j++) {
-            comments.push(<p className="comments">{hall.comments[j]}</p>);
+            comments.push(<p className="comments" >{hall.comments[j]}</p>);
         }
 
         cards.push(
@@ -114,8 +118,8 @@ function DiningPage(props) {
                 <h2>{hall.name}</h2>
                 <p className="dining-rating">Average rating: {hall.averageRating}</p>
                 <div className="dining-user-options">
-                    <div className="comment" onClick={commentCheck}>Comments</div>
-                    <div className="leave-comment" onClick={leaveCheck}>Leave a comment</div>
+                    <div className="comment" onClick={commentCheck} id={"comments" + i}>Comments</div>
+                    <div className="leave-comment" onClick={leaveCheck} id={"leave-comments" + i}>Leave a comment</div>
                 </div>
                 <div className="dining-comments">
                     {comments}
